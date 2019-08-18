@@ -1,0 +1,9 @@
+{
+  "rules": [
+    {
+      "id": "R.id.textView",
+      "action": "@Activity/com.zhanggouzi.demoActivity",
+      "args": "ARG1=@bean"
+    }
+  ]
+}

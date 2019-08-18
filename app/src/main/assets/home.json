@@ -1,0 +1,13 @@
+{
+  "type": "home",
+  "columns": [
+    {
+      "container": "com.zhanggouzi.servicecard.twocard.TwoCard",
+      "dataUrl": "@assets/card1.json"
+    },
+    {
+      "container": "com.zhanggouzi.servicecard.twocard.TwoCard",
+      "dataUrl": "@assets/card2.json"
+    }
+  ]
+}

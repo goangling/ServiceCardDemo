@@ -1,0 +1,39 @@
+{
+  "columnTitle": "",
+  "columnColor": "",
+  "columnStyle": "",
+  "cards": [
+    {
+      "type": "type1",
+      "style": "style1",
+      "field": [
+        {
+          "key": "icon",
+          "label": "icon",
+          "value": "file://ic_assets.png"
+        },
+        {
+          "key": "title",
+          "label": "title",
+          "value": "小A"
+        }
+      ]
+    },
+    {
+      "type": "type1",
+      "style": "style1",
+      "field": [
+        {
+          "key": "icon",
+          "label": "icon",
+          "value": "res://R.drawable.ic_launcher_round"
+        },
+        {
+          "key": "title",
+          "label": "title",
+          "value": "小B"
+        }
+      ]
+    }
+  ]
+}

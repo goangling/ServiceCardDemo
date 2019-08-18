@@ -1,0 +1,39 @@
+{
+  "columnTitle": "",
+  "columnColor": "",
+  "columnStyle": "",
+  "cards": [
+    {
+      "type": "type1",
+      "style": "style1",
+      "field": [
+        {
+          "key": "icon",
+          "label": "icon",
+          "value": "https://tb1.bdstatic.com/tb/%E5%9B%BD%E9%99%85%E7%B1%B3%E5%85%B0.jpg"
+        },
+        {
+          "key": "title",
+          "label": "title",
+          "value": "国际米兰"
+        }
+      ]
+    },
+    {
+      "type": "type1",
+      "style": "style1",
+      "field": [
+        {
+          "key": "icon",
+          "label": "icon",
+          "value": "https://tb1.bdstatic.com/tb/%E6%9B%BC%E8%81%94.jpg"
+        },
+        {
+          "key": "title",
+          "label": "title",
+          "value": "曼联"
+        }
+      ]
+    }
+  ]
+}
