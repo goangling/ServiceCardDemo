@@ -2,8 +2,35 @@
   "rules": [
     {
       "id": "R.id.textView",
-      "action": "@Activity/com.zhanggouzi.demoActivity",
-      "args": "ARG1=@bean"
+      "value":"@Card/field[title].value",
+      "destination": "@Activity/com.zhanggouzi.servicecarddemo.DemoActivity",
+      "args": {
+        "extras": [
+          {
+            "key": "INTENT_KEY_DATA",
+            "value": "@Card/field[title].value"
+          },{
+            "key": "INTENT_KEY_ALL",
+            "value": "@Card/all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "R.id.imageView",
+      "value": "@Card/field[icon].value",
+      "destination": "@Action/android.intent.action.VIEW",
+      "args": {
+        "uri": "@Card/field[icon].value",
+        "packageName":"",
+        "className": "",
+        "extras": [
+          {
+            "key": "",
+            "value": ""
+          }
+        ]
+      }
     }
   ]
 }

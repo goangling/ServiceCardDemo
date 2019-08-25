@@ -3,7 +3,6 @@ package com.zhanggouzi.servicecard.simplecard;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,8 +10,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.zhanggouzi.servicecard.ICard;
 import com.zhanggouzi.servicecard.R;
 import com.zhanggouzi.servicecard.bean.MappingRuleManager;
+import com.zhanggouzi.servicecard.bean.ServiceCard;
 import com.zhanggouzi.servicecard.glide.GlideWrapper;
 
 
@@ -20,7 +22,7 @@ import com.zhanggouzi.servicecard.glide.GlideWrapper;
  * 目前只预置了一种效果，如果有多种，可以根据CardBean的style来预置
  * 附加的设置，比如点击、滑动效果，可以在CardBean的style对应配置文件中配置
  */
-public class Card extends LinearLayout {
+public class Card extends LinearLayout implements ICard {
     private static final String TAG = "card";
     private String cardTitle;
     private Drawable cardDrawable;
@@ -88,22 +90,39 @@ public class Card extends LinearLayout {
         imageView.setImageDrawable(cardDrawable);
     }
 
-    public void setData(CardBean bean) {
-        this.cardTitle = bean.getTitle();
-        textView.setText(cardTitle);
+    //方案1 预置显示数据，点击通过style.json配置
+//    public void setData(CardBean bean) {
+//        this.cardTitle = bean.getTitle();
+//        textView.setText(cardTitle);
+//
+//        GlideWrapper.setImage(getContext(), bean.getIcon(), imageView);
+//
+//        MappingRuleManager mappingRuleManager = new MappingRuleManager(getContext());
+//        if (!mappingRuleManager.init(getName(), bean.getStyle())) {
+//            Log.e(TAG, "init failed");
+//            return;
+//        }
+//        if (!mappingRuleManager.map(this,null)) {
+//            Log.e(TAG, "failed to map");
+//        }
+//    }
 
-        GlideWrapper.setImage(getContext(), bean.getIcon(), imageView);
+    //方案2 显示数据、点击都通过style.json配置
+    public void setData(String json) {
+        ServiceCard serviceCard = new Gson().fromJson(json, ServiceCard.class);
 
         MappingRuleManager mappingRuleManager = new MappingRuleManager(getContext());
-        if (!mappingRuleManager.init("simplecard_" + bean.getStyle() + ".json")) {
+        if (!mappingRuleManager.init(getName(), serviceCard.getStyle())) {
             Log.e(TAG, "init failed");
             return;
         }
-        if (!mappingRuleManager.map(this)) {
+        if (!mappingRuleManager.map(this,serviceCard)) {
             Log.e(TAG, "failed to map");
         }
-
-
     }
 
+    @Override
+    public String getName() {
+        return "simplecard";
+    }
 }
